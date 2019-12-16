@@ -1,0 +1,1 @@
+Dispositivo electrónico encargado de controlar las direccionales de un vehículo de manera innovadora con el fin de que sean persibidas de manera mas amigable por el ojo humano.

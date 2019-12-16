@@ -39,6 +39,7 @@ Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
   pinMode(13, OUTPUT);
+  pinMode(8, INPUT);
   // These lines are specifically to support the Adafruit Trinket 5V 16 MHz.
   // Any other board, you can remove this part (but no harm leaving it):
 #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
@@ -71,11 +72,21 @@ void loop() {
   //toggle = !toggle;
 
   ///strip.setPixelColor(strip.getPin() -6, (uint32_t) strip.Color(100,100,100));
-  strip.setPixelColor(10,strip.gamma32(strip.Color(255,255,0,255)));
-  strip.setBrightness(250);
-  strip.show();                          //  Update strip to match
   
-    delay(500);                           //  Pause for a moment
+  if(digitalRead(8) == 1){
+    while(1){
+      strip.setPixelColor(10,strip.gamma32(strip.Color(255,255,0,255)));
+      strip.setBrightness(250);
+      strip.show();                          //  Update strip to match
+      delay(20);                           //  Pause for a moment
+      if(digitalRead(8) == 0){
+        
+        strip.setBrightness(0);
+        strip.show();                          //  Update strip to match
+        break;
+        }
+      }
+    }
 }
 
 
