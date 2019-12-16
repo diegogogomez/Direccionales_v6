@@ -49,42 +49,33 @@ void setup() {
 
   strip.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
   strip.show();            // Turn OFF all pixels ASAP
-  strip.setBrightness(50); // Set BRIGHTNESS to about 1/5 (max = 255)
+  strip.setBrightness(150); // Set BRIGHTNESS to about 1/5 (max = 255)
 }
 
 
 // loop() function -- runs repeatedly as long as board is on ---------------
 
 void loop() {
-  // Fill along the length of the strip in various colors...
-  //colorWipe(strip.Color(50,   50,   50), 75); // Red
-  //colorWipe(strip.Color(  100, 100,   0), 25); // Green
-  //colorWipe(strip.Color(  0,   0, 255), 50); // Blue
 
-  // Do a theater marquee effect in various colors...
-  //theaterChase(strip.Color(127, 127, 127), 150); // White, half brightness
-  //theaterChase(strip.Color(127,   0,   0), 50); // Red, half brightness
-  //theaterChase(strip.Color(  0,   0, 127), 50); // Blue, half brightness
+  int i = 0;
+  int num_pix = 1;
 
-  //rainbow(150);             // Flowing rainbow cycle along the whole strip
-  //theaterChaseRainbow(200); // Rainbow-enhanced theaterChase variant
-
-  //toggle = !toggle;
-
-  ///strip.setPixelColor(strip.getPin() -6, (uint32_t) strip.Color(100,100,100));
   
   if(digitalRead(8) == 1){
     while(1){
-      strip.setPixelColor(10,strip.gamma32(strip.Color(255,255,0,255)));
-      strip.setBrightness(250);
-      strip.show();                          //  Update strip to match
-      delay(20);                           //  Pause for a moment
-      if(digitalRead(8) == 0){
-        
-        strip.setBrightness(0);
-        strip.show();                          //  Update strip to match
-        break;
+      if(i >= strip.numPixels()){
+        i = 0;
         }
+      strip.setPixelColor(i,strip.Color(0,0,0));
+      i++;
+      if(i == strip.numPixels()){
+        strip.setPixelColor(0,strip.Color(255,255,0));
+        }
+      else{
+        strip.setPixelColor(i,strip.Color(255,255,0));
+        }
+      strip.show();
+      delay(150);
       }
     }
 }
