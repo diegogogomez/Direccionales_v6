@@ -72,7 +72,7 @@ void loop() {
 
   ///strip.setPixelColor(strip.getPin() -6, (uint32_t) strip.Color(100,100,100));
   strip.setPixelColor(10,strip.gamma32(strip.Color(255,255,0,255)));
-  strip.setBrightness(30);
+  strip.setBrightness(250);
   strip.show();                          //  Update strip to match
   
     delay(500);                           //  Pause for a moment
