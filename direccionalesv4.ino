@@ -39,7 +39,11 @@ Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
   pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
   pinMode(8, INPUT);
+  pinMode(9, INPUT);
+  pinMode(10, INPUT);
   // These lines are specifically to support the Adafruit Trinket 5V 16 MHz.
   // Any other board, you can remove this part (but no harm leaving it):
 #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
@@ -49,7 +53,7 @@ void setup() {
 
   strip.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
   strip.show();            // Turn OFF all pixels ASAP
-  strip.setBrightness(50); // Set BRIGHTNESS to about 1/5 (max = 255)
+  strip.setBrightness(255); // Set BRIGHTNESS to about 1/5 (max = 255)
 }
 
 
@@ -73,6 +77,28 @@ void loop() {
 
 
     if (digitalRead(8) == 1) {
+      digitalWrite(12,0);
+     digitalWrite(11,0);
+     direccional1(20,6);
+     direccional1(18,8);
+     direccional1(16,10);
+     //direccional1(14,12);
+     delay(200);
+    }
+
+    else if (digitalRead(9) == 1) {
+     digitalWrite(12,1);
+     digitalWrite(11,0);
+     direccional1(20,6);
+     direccional1(18,8);
+     direccional1(16,10);
+     //direccional1(14,12);
+     delay(200);
+    }
+
+    else if (digitalRead(10) == 1) {
+     digitalWrite(12,0);
+     digitalWrite(11,1);
      direccional1(20,6);
      direccional1(18,8);
      direccional1(16,10);
