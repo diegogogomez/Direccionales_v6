@@ -76,7 +76,7 @@ void loop() {
 
 
 
-    if (digitalRead(8) == 1) {
+    if (digitalRead(8) == 1) {                //direccional Izquierda
       digitalWrite(12,0);
      digitalWrite(11,0);
      direccional1(20,6);
@@ -86,7 +86,7 @@ void loop() {
      delay(200);
     }
 
-    else if (digitalRead(9) == 1) {
+    else if (digitalRead(9) == 1) {           //direccional Derecha
      digitalWrite(12,1);
      digitalWrite(11,0);
      direccional1(20,6);
@@ -96,7 +96,7 @@ void loop() {
      delay(200);
     }
 
-    else if (digitalRead(10) == 1) {
+    else if (digitalRead(10) == 1) {          //direccionales estacionarias
      digitalWrite(12,0);
      digitalWrite(11,1);
      direccional1(20,6);
